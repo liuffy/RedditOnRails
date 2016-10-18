@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    current_user.session_token = nil
     log_out
     redirect_to new_session_url
   end
