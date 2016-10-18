@@ -9,4 +9,7 @@ class Post < ActiveRecord::Base
     inverse_of: :posts
   )
 
+  has_many :subs, through: :post_subs, source: :sub
+  has_many :post_subs, inverse_of: :post, dependent: :destroy
+
 end

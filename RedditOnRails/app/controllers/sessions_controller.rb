@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
-# There's no sessions model
-   before_action :required_signed_in!, only: [:destroy]
-  # skip_before_action :require_logged_in!, only: [:new, :create]
+  before_action :require_logged_out!, only: [:new, :create]
+  before_action :require_logged_in!, only: [:destroy]
 
   def new
     render :new
@@ -14,17 +13,16 @@ class SessionsController < ApplicationController
     )
 
     if @user
-      log_in!(user)
+      log_in(@user)
       redirect_to subs_url
     else
-      flash.now[:errors] = ["Incorrect username/password combination."]
+      flash.now[:errors] = ["Invalid username/password combination."]
       render :new
     end
   end
 
   def destroy
-    log_out!(user)
+    log_out
     redirect_to new_session_url
   end
-
 end

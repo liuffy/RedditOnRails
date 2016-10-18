@@ -6,6 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+<% if current_user.nil? %>
+  <%= button_to "Log in!", new_session_url, method: :get %>
+  <%= button_to "New? Create a Reddit account.", new_user_url, method: :get %>
+<% else %>
+  You are currently logged in, <%= current_user.username %>
+  <img src="https://www.redditstatic.com/icon.png" width="40" height="auto">
+  <%= button_to "Log out", session_url, method: :delete %>
+<% end  %>
 <body>
 
 <%= yield %>
