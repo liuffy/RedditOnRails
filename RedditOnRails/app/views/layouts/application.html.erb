@@ -2,11 +2,30 @@
 <html>
 <head>
   <title>RedditOnRails</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+  <%= csrf_meta_tags %> -->
 
+  <style type="text/css">
+    body{
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4{
+      font-family: Verdana, Geneva, sans-serif;
+    }
+
+    li{
+      list-style-type: none;
+    }
+
+  </style>
+</head>
+<body>
+
+<img src="http://i.imgur.com/nqyB2SI.jpg"
+  height="160" width="auto"><br>
 <% if current_user.nil? %>
   <%= button_to "Log in!", new_session_url, method: :get %>
   <%= button_to "New? Create a Reddit account.", new_user_url, method: :get %>
@@ -15,7 +34,7 @@
   <img src="https://www.redditstatic.com/icon.png" width="40" height="auto">
   <%= button_to "Log out", session_url, method: :delete %>
 <% end  %>
-<body>
+
 
 <%= yield %>
 

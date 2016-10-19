@@ -1,1 +1,9 @@
-Hurr hurr hurr
+  <div class="border">
+    <h1>All the subs!</h1>
+
+    <ul>
+      <% Sub.all.each do |sub| %>
+      <li><%= link_to sub.sub_name, sub %><br></li>
+      <% end %>
+    </ul>
+  </div>
