@@ -1,7 +1,9 @@
 <!--Edit your 'Post' new/edit views to allow the user to select multiple subs via checkboxes
 
 Structure your HTML form to upload an array of sub_ids nested under post
-Update the PostsController#post_params to accept an array of sub_ids  -->
+Update the PostsController#post_params to accept an array of sub_ids
+
+Edit your PostsController#show view to provide a link to a comment form and to display top-level comments. -->
 
 
 
@@ -10,9 +12,15 @@ Update the PostsController#post_params to accept an array of sub_ids  -->
   <a href="<%= @post.url %>">reference</a><br>
 <p><%= @post.content %></p>
 
-<div class="container">
+<div class="w3-container w3-section w3-blue">
 
+<%= link_to "Comment on this post", new_post_comment_url(@post), method: :get %><br>
 
+<ul>
+<% @post.comments.each do |comment| %>
+      <li><%= link_to "#{comment.content.slice(0,40)}...", comment %></li>
+<% end %>
+</ul>
 
 </div>
 

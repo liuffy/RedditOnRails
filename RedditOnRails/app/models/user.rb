@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   )
 
   has_many :posts, inverse_of: :author
+  has_many :comments, inverse_of: :author
 
 
 

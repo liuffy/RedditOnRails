@@ -1,0 +1,20 @@
+<!--Edit your 'Post' new/edit views to allow the user to select multiple subs via checkboxes
+
+Structure your HTML form to upload an array of sub_ids nested under comment
+Update the PostsController#comment_params to accept an array of sub_ids
+
+Edit your PostsController#show view to provide a link to a comment form and to display top-level comments. -->
+
+
+
+<h3>Comment to <%= @comment.post.title %></h3>
+
+<p><%= @comment.content %></p>
+<p><small>-- Posted by: <%= @comment.author.username %></small></p>
+
+
+
+</div>
+
+
+<%= link_to "<< Back to Main", subs_url %>
