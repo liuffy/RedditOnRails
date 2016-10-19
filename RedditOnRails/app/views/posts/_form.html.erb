@@ -29,7 +29,7 @@ Checkboxes -->
 <!-- Post url-->
 <label for="post_url">Url(optional):</label>
 <input
-    type="text"
+    type="url"
     name="post[url]"
     id="post_url"
     value="<%= post.url %>">
@@ -48,7 +48,7 @@ Checkboxes -->
         type="checkbox"
         name="post[sub_ids][]"
         value="<%= sub.id %>"
-         <%= "checked" if post.subs.include?(sub) %>>
+         <%= "checked" if post.sub_ids.include?(sub.id) %>>
         <%= sub.sub_name %><br>
     <% end %>
 <br>

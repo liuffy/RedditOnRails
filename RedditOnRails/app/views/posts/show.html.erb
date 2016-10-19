@@ -6,7 +6,7 @@ Update the PostsController#post_params to accept an array of sub_ids  -->
 
 
 <h3><%= @post.title %></h3>
-
+<label>Link:</Label><%= @post.url %>
 <label><h4>Content</h4><label>
 <p><%= @post.content %></p>
 
@@ -18,3 +18,4 @@ Update the PostsController#post_params to accept an array of sub_ids  -->
 
 
 <%= link_to "Edit post", edit_post_url(@post) if @post.author == current_user %><br>
+<%= link_to "<< Back to Main", subs_url %>
