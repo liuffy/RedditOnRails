@@ -6,8 +6,8 @@ Update the PostsController#post_params to accept an array of sub_ids  -->
 
 
 <h3><%= @post.title %></h3>
-<label>Link:</Label><%= @post.url %>
-<label><h4>Content</h4><label>
+<label>Link:</Label>
+  <a href="<%= @post.url %>">reference</a><br>
 <p><%= @post.content %></p>
 
 <div class="container">
