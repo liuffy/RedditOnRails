@@ -43,12 +43,12 @@ class PostsController < ApplicationController
 
     private
 
-    def user_is_author!
+    def user_is_auth!
       return if Post.find(params[:id]).author == current_user
       render json: "You are not the author of this post", status: :forbidden
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :author_id, :url, sub_ids:[])
+      params.require(:post).permit(:title, :content, :user_id, :url, sub_ids:[])
     end
 end

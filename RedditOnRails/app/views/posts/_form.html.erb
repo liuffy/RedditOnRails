@@ -1,15 +1,15 @@
 <!-- Edit your 'Post' new/edit views to allow the user to select multiple subs via CHECKBOXES
 
 Structure your HTML form to upload an array of sub_ids nested under post
-Update the PostsController#post_params to accept an array of sub_ids  --> -->
+Update the PostsController#post_params to accept an array of sub_ids  -->
 
 
-<%= action = (post.persisted? ? post_url(post) : posts_url %>
-<%= method = (post.persisted? ? :patch : :post )%>
-<%= submit_text = (post.persisted? ? "Update" : "Create") %>
+<% action = (post.persisted? ? post_url(post) : posts_url) %>
+<% method = (post.persisted? ? :patch : :post )%>
+<% submit_text = (post.persisted? ? "Update" : "Create") %>
 
 <form action="<%= action %>" method="post">
-<input type="hidden" name="<%= _method %>" value="<%= method %>">
+<input type="hidden" name="_method" value="<%= method %>">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
 <!-- Title - text
@@ -19,25 +19,39 @@ Checkboxes -->
 
 <!-- Post title -->
 <label for="post_title">Title</label>
-<input type="text" name="post[title]" id="post_title">
+<input
+    type="text"
+    name="post[title]"
+    id="post_title"
+    value="<%= post.title %>">
 <br>
 
 <!-- Post url-->
 <label for="post_url">Url(optional):</label>
-<input type="text" name="post[url]" id="post_url">
-
+<input
+    type="text"
+    name="post[url]"
+    id="post_url"
+    value="<%= post.url %>">
 <br>
-<!-- Post content -->
-<label for="post_content">Content:</label>
-<textarea name="post[content]" cols="60" rows="10"><%= post[content] %></textarea>
 
+<!-- Post content -->
+<label for="post_content">Post Content:</label><br>
+<textarea name="post[content]" id="post_content" cols="80" rows="10"><%= post.content %></textarea>
 <br>
 
 <!-- Subs  -->
-<label for="post_subs">Subs to post to</label>
+<input type="hidden" name="post[sub_ids][]" value="">
+<b><label for="post_subs">Subs to post to:</label></b><br>
     <% Sub.all.each do |sub| %>
-        <input type="checkbox" name="post[sub_ids]" value="<%= sub.id %>"><%= sub.sub_name %>
+        <input
+        type="checkbox"
+        name="post[sub_ids][]"
+        value="<%= sub.id %>"
+         <%= "checked" if post.subs.include?(sub) %>>
+        <%= sub.sub_name %><br>
     <% end %>
 <br>
 
-<input type="submit" value=<%= submit_text %></form>
+
+<input type="submit" value="<%= submit_text %>"></form>

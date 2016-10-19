@@ -1,0 +1,19 @@
+
+<h1><%= @sub.sub_name %></h1>
+
+<label><h3>Description</h3><label>
+<p><%= @sub.description %></p>
+
+<div class="border">
+<h2 style="color:crimson">Newest Posts</h2>
+<ul>
+<% @sub.posts.each do |post| %>
+  <li><%= link_to "• #{post.title.slice(0,50)}...", post %></li>
+  <% end %>
+</ul>
+
+<%= button_to "Create Post", new_post_url, method: :get%>
+
+</div>
+<%= link_to "Edit sub", edit_sub_url(@sub) if @sub.moderator == current_user %><br>
+<%= link_to "<< Back to All Subs", subs_url, method: :get %>

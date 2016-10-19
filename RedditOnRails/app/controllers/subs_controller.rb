@@ -32,7 +32,7 @@ class SubsController < ApplicationController
   end
 
   def edit
-    # Write an edit route where the moderator is allowed to update the title and description.
+    # Write an edit route where the moderator is allowed to update the title and description - not the name of the sub?.
     @sub = Sub.find(params[:id])
     render :edit
   end
@@ -40,7 +40,7 @@ class SubsController < ApplicationController
   def update
     @sub = Sub.find(params[:id])
 
-    if @sub.update
+    if @sub.update(sub_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:errors] = @sub.errors.full_messages

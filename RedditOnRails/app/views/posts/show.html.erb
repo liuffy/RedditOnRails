@@ -2,3 +2,19 @@
 
 Structure your HTML form to upload an array of sub_ids nested under post
 Update the PostsController#post_params to accept an array of sub_ids  -->
+
+
+
+<h3><%= @post.title %></h3>
+
+<label><h4>Content</h4><label>
+<p><%= @post.content %></p>
+
+<div class="container">
+
+
+
+</div>
+
+
+<%= link_to "Edit post", edit_post_url(@post) if @post.author == current_user %><br>

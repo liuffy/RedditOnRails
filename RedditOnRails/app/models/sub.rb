@@ -10,7 +10,7 @@ class Sub < ActiveRecord::Base
     inverse_of: :subs
   )
 
-  has_many :posts, through: :post_subs
+  has_many :posts, through: :post_subs, source: :post
   has_many :post_subs, inverse_of: :sub, dependent: :destroy
 
 end

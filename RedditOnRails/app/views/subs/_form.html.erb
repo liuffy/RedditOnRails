@@ -1,0 +1,21 @@
+<!-- sub[sub_name], sub[description], sub[moderator_id] -->
+
+<% action = (sub.persisted? ? sub_url(sub) : subs_url) %>
+<% method = (sub.persisted? ? :patch : :post)%>
+<% submit_text = (sub.persisted? ? 'Update' : 'Create') + ' sub' %>
+
+<form action="<%= action  %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+
+<label>Subreddit Name:</label>
+  <input type="text" name="sub[sub_name]" value="<%= sub.sub_name %>">
+
+<br>
+<label>Description of Subreddit:</label><br>
+  <textarea name="sub[description]" cols="40" rows="5" placeholder="Describe this subreddit..."><%= sub.description %></textarea>
+<br>
+
+<input type="submit" value="<%= submit_text %>">
+</form>
