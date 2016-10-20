@@ -1,24 +1,24 @@
-User.create!([
-  {username: "sophisticus", password_digest: "$2a$10$SNd9578Rks2UtZ/HpfOcReXOsmpDs.wjAiHNCnhDSgLyWdvkKMrtO", session_token: "iq31lrbofm_3CViECnb2Cw"},
-  {username: "temmie", password_digest: "$2a$10$Ehs62shTv6fVxqmrFA3NCuCHOpZN6B9qhyuuNZ7QaoJEWyIQcPCXO", session_token: "2MDVJIcsuhPj4IrmZglmFQ"},
-  {username: "connor", password_digest: "$2a$10$K/oZyn4lMICC2jASDZL6Qexo0.UJUcACgtWllMKflwJB3iepVnUa.", session_token: "SV4n3EXg86THZVWr29hWBQ"},
-  {username: "darien", password_digest: "$2a$10$Kw50ewCKcMtV28/FHvPOcuxwlKIHiCHvHauX81h3dhrUhPSak9HE.", session_token: "Pdj0X2gDe8Yg2nDB1sxX3Q"},
-  {username: "barbara", password_digest: "$2a$10$SsbZIOuP5L8EuDcx13pUqOcZ3CqwfcftngeF3fhaP02pjCodfBw7e", session_token: "wUMbAlwVJwTq6SB1rSEz-Q"},
-  {username: "samuel_l_jackson", password_digest: "$2a$10$1IW46WNpjtouLuReVjQ2TuDzmhFrPYGeT.MGPdEvbIQMncg3COUsS", session_token: "4V4aD8_JhiY1uzsAbvi0Yw"}
-])
+# User.create!([
+#   {username: "sophisticus", password_digest: "$2a$10$SNd9578Rks2UtZ/HpfOcReXOsmpDs.wjAiHNCnhDSgLyWdvkKMrtO", session_token: "iq31lrbofm_3CViECnb2Cw"},
+#   {username: "temmie", password_digest: "$2a$10$Ehs62shTv6fVxqmrFA3NCuCHOpZN6B9qhyuuNZ7QaoJEWyIQcPCXO", session_token: "2MDVJIcsuhPj4IrmZglmFQ"},
+#   {username: "connor", password_digest: "$2a$10$K/oZyn4lMICC2jASDZL6Qexo0.UJUcACgtWllMKflwJB3iepVnUa.", session_token: "SV4n3EXg86THZVWr29hWBQ"},
+#   {username: "darien", password_digest: "$2a$10$Kw50ewCKcMtV28/FHvPOcuxwlKIHiCHvHauX81h3dhrUhPSak9HE.", session_token: "Pdj0X2gDe8Yg2nDB1sxX3Q"},
+#   {username: "barbara", password_digest: "$2a$10$SsbZIOuP5L8EuDcx13pUqOcZ3CqwfcftngeF3fhaP02pjCodfBw7e", session_token: "wUMbAlwVJwTq6SB1rSEz-Q"},
+#   {username: "samuel_l_jackson", password_digest: "$2a$10$1IW46WNpjtouLuReVjQ2TuDzmhFrPYGeT.MGPdEvbIQMncg3COUsS", session_token: "4V4aD8_JhiY1uzsAbvi0Yw"}
+# ])
 
-Sub.create!([
-  {sub_name: "/r/Crappy Designs", description: "Incredibly terrible designs from around the world.", moderator_id: 1},
-  {sub_name: "/r/Mildly Interesting\u2028", description: "Bored? Come here and waste an hour or 5.", moderator_id: 1},
-  {sub_name: "/r/Pandas", description: "PANDA PANDA PANDA PANDA ", moderator_id: 1},
-  {sub_name: "/r/Spiders", description: "Spidddeerrrrrsss ahhhhh", moderator_id: 1},
-  {sub_name: "/r/Mildly Infuriating", description: "For posts that'll instantly give you a bad day.", moderator_id: 1},
-  {sub_name: "/r/WTF", description: "HOW. DID. THIS. HAPPEN.", moderator_id: 1},
-  {sub_name: "/r/askreddit\u2028", description: "People asking other people questions.", moderator_id: 1},
-  {sub_name: "/r/Petty Revenge", description: "People living out their darkest fantasies", moderator_id: 1},
-  {sub_name: "/r/Tales From Retail", description: "Everyday nightmares, shared by people behind the cashiers. ", moderator_id: 1},
-  {sub_name: "/r/2cool4skool", description: "For all the cool kids", moderator_id: 1}
-])
+# Sub.create!([
+#   {sub_name: "/r/Crappy Designs", description: "Incredibly terrible designs from around the world.", moderator_id: 1},
+#   {sub_name: "/r/Mildly Interesting\u2028", description: "Bored? Come here and waste an hour or 5.", moderator_id: 1},
+#   {sub_name: "/r/Pandas", description: "PANDA PANDA PANDA PANDA ", moderator_id: 1},
+#   {sub_name: "/r/Spiders", description: "Spidddeerrrrrsss ahhhhh", moderator_id: 1},
+#   {sub_name: "/r/Mildly Infuriating", description: "For posts that'll instantly give you a bad day.", moderator_id: 1},
+#   {sub_name: "/r/WTF", description: "HOW. DID. THIS. HAPPEN.", moderator_id: 1},
+#   {sub_name: "/r/askreddit\u2028", description: "People asking other people questions.", moderator_id: 1},
+#   {sub_name: "/r/Petty Revenge", description: "People living out their darkest fantasies", moderator_id: 1},
+#   {sub_name: "/r/Tales From Retail", description: "Everyday nightmares, shared by people behind the cashiers. ", moderator_id: 1},
+#   {sub_name: "/r/2cool4skool", description: "For all the cool kids", moderator_id: 1}
+# ])
 
 Post.create!([
   {title: "Yes, this design trend is in fact one of the worst things to ever come out of Western culture", url: "https://i.redditmedia.com/70AmNCRuXC4fkbkxBbq_Cruxas72C324OZaFAX9R5yI.jpg?w=1024&s=c250370fa371e422e26930399c2c2a33", content: "Handsoap actually looks aesthetic just by the shape of the letters. Bodylotion, I keep seeing the word \"bloody\" in there, and of course \"poo\".", user_id: 1},
