@@ -14,7 +14,7 @@
 class Post < ActiveRecord::Base
   include Votable # takes care of has_many association
 
-  validates :title, :user_id, presence: true #content not required (title alone is enough)
+  validates :title, :author, presence: true #content not required (title alone is enough)
 
   belongs_to(
     :author,
