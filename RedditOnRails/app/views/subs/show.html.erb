@@ -9,7 +9,7 @@
 <ul>
 
 <% @sub.posts.sort_by(&:user_votes).reverse.each do |post| %>
-  <li><%= link_to "#{post.title}", post %><small> submitted by <%= post.author.username %></small><b>
+  <li><%= link_to "#{post.title}", post %><small> submitted by <%= link_to post.author.username, user_url(post.author)%></small><b>
     <small><%= post.user_votes %> points</small></b></li>
   <% end %>
 </ul>
