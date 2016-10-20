@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
     before_action :user_is_auth!, only: [:edit, :update]
-    before_action :require_logged_in!, except: [:show]
+    before_action :require_logged_in!, only: [:create, :new]
 
     def new
       @post = Post.new

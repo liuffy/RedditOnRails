@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 # The new route could have a url like /posts/123/comments/new.
 # I recommend that your form post to a top-level /comments URL, though.
 # These are the only two comments routes you need so far.
+  before_action :require_logged_in!, only: [:create, :new]
 
   def new
     @comment = Comment.new(post_id: params[:post_id])
