@@ -4,6 +4,7 @@ module Votable
   included do
     has_many :votes, as: :votable,
     class_name: 'Vote',
+    foreign_key: :votable_id,
     dependent: :destroy
   end
 

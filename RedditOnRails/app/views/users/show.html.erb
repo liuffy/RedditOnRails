@@ -1,0 +1,16 @@
+<h2 style="color:crimson">Overview for <%= current_user.username %></h2>
+
+<h3>Posts by <%= current_user.username %></h3>
+<ul>
+  <% current_user.posts.order(created_at: :desc).each do |post| %>
+  <br><%= link_to post.content, post_url(post) %> at <%= post.created_at %><br>
+  <% end %>
+</ul>
+<h3>Comments by <%= current_user.username %></h3>
+<dl>
+  <% current_user.comments.order(created_at: :desc).each do |comment| %>
+  <dt><br><i><%= comment.post.content %></i></small><br>
+    <dd><%= link_to comment.content, comment_url(comment) %> at <%= comment.created_at %>
+      <b><small><%= comment.user_votes %> points</small></b></li>
+  <% end %>
+</dl>

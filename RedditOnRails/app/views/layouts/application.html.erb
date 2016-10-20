@@ -28,7 +28,7 @@
   <%= button_to "Log in!", new_session_url, method: :get %>
   <%= button_to "New? Create a Reddit account.", new_user_url, method: :get %>
 <% else %>
-  You are currently logged in, <%= current_user.username %>
+  You are currently logged in, <%= link_to current_user.username, user_url(current_user) %> 
   <img src="https://www.redditstatic.com/icon.png" width="40" height="auto">
   <%= button_to "Log out", session_url, method: :delete %>
 <% end  %>

@@ -7,8 +7,10 @@
 <div class="border">
 <h2 style="color:crimson">Newest Posts</h2>
 <ul>
-<% @sub.posts.each do |post| %>
-  <li><%= link_to "#{post.title}", post %></li><small>submitted by <%= post.author.username %></small>
+
+<% @sub.posts.sort_by(&:user_votes).reverse.each do |post| %>
+  <li><%= link_to "#{post.title}", post %><small> submitted by <%= post.author.username %></small><b>
+    <small><%= post.user_votes %> points</small></b></li>
   <% end %>
 </ul>
 

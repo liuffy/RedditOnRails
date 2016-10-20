@@ -20,16 +20,17 @@ Edit your PostsController#show view to provide a link to a comment form and to d
 <p><%= @post.content %></p>
 <!--  VOTES -->
 <%= button_to "Upvote", upvote_post_url(@post), method: :post  %>
-<img src="http://www.stickaz.com/3086-3970-large/upvote-downvote.png" height="30" width="auto"> Votes: (<%= @post.user_votes %>)
+<img src="http://www.stickaz.com/3086-3970-large/upvote-downvote.png" height="30" width="auto"> <b><small><%= @post.user_votes %> points</small></b>
 <%= button_to "Downvote", downvote_post_url(@post), method: :post  %><br>
 
-<div class="w3-container w3-section w3-blue">
+
+  <%= link_to "Edit post", edit_post_url(@post) if @post.author == current_user %><br>
   <%= button_to "Comment on this post", new_post_comment_url(@post), method: :get %><br>
 <p>_____________________________________________________________________________________________</p><br>
 <h2>Comments</h2>
 <ul>
-<% @post.parent_comments.each do |comment| %>
-      <li><%= link_to "#{comment.content.slice(0,80)}...", comment %><small> by <%= comment.author.username %></small></li>
+<% @post.parent_comments.sort_by(&:user_votes).reverse.each do |comment| %>
+      <li><%= link_to "#{comment.content}", comment %><small> by <%= comment.author.username %></small> <b><small><%= comment.user_votes %> points</small></b></li>
       <% if comment.has_children? %>
           <%= render 'comments/comment', comment: comment %>
       <% end %>
@@ -37,8 +38,5 @@ Edit your PostsController#show view to provide a link to a comment form and to d
 <% end %>
 </ul>
 
-</div>
 
-
-<%= link_to "Edit post", edit_post_url(@post) if @post.author == current_user %><br>
 <%= link_to "<< Back to Main", subs_url %>
