@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   has_many :posts, inverse_of: :author
   has_many :comments, inverse_of: :author
-  has_many :votes, inverse_of: :voter
+  has_many :votes, class_name: 'Vote', inverse_of: :voter
 
 
 

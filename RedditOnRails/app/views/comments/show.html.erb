@@ -8,7 +8,10 @@ Edit your PostsController#show view to provide a link to a comment form and to d
 
 
 <h3>Comment to '<%= @comment.post.title %>'</h3>
-Votes: (<%= @comment.user_votes %>)
+<%= button_to "Upvote", upvote_comment_url(@comment), method: :post  %>
+<img src="http://www.stickaz.com/3086-3970-large/upvote-downvote.png" height="30" width="auto"> Votes: (<%= @comment.user_votes %>)
+<%= button_to "Downvote", downvote_comment_url(@comment), method: :post  %>
+
 <p><%= @comment.content %></p>
 <p><small>Posted by: <%= @comment.author.username %> at <%= @comment.created_at %></small></p>
 

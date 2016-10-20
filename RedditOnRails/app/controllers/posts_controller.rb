@@ -9,29 +9,28 @@ class PostsController < ApplicationController
     end
 
     def upvote
-      @comment = Comment.find(params[:id])
-      @user_vote = Vote.create(
-        votable_id: @comment.id,
-        votable_type: "Comment",
-        voter_id: current_user.id,
-        value: 1)
-
-      if @user_vote.nil?
-        flash.now[:errors] = @user_vote.errors.full_messages
-      end
+      vote(1)
     end
 
     def downvote
-      @comment = Comment.find(params[:id])
-      @user_vote = Vote.create(
-        votable_id: @comment.id,
-        votable_type: "Comment",
-        voter_id: current_user.id,
-        value: -1)
+      vote(-1)
+    end
 
-      if @user_vote.nil?
-        flash.now[:errors] = @user_vote.errors.full_messages
+    def vote(direction)
+      @post = Post.find(params[:id])
+      @user_vote = Vote.find_by(
+        votable_id: @post.id, votable_type: "Post", user_id: current_user.id
+      )
+
+      if @user_vote
+        @user_vote.update(value: direction)
+      else
+        @post.votes.create(
+          user_id: current_user.id, value: direction
+        )
       end
+
+      redirect_to post_url(@post)
     end
 
     def create
