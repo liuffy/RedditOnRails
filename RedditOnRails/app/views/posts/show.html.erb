@@ -8,17 +8,28 @@ Edit your PostsController#show view to provide a link to a comment form and to d
 
 
 <h3><%= @post.title %></h3>
-<label>Link:</Label>
+<label><b><small><i>Posted in:</i></small></b></label>
+<ul>
+  <% @post.subs.each do |sub| %>
+  <li><small><%= link_to sub.sub_name, sub, method: :get %></small><br></li>
+  <% end %>
+</ul>
+
+<label><b>Link:</b></Label>
   <a href="<%= @post.url %>">reference</a><br>
 <p><%= @post.content %></p>
 
 <div class="w3-container w3-section w3-blue">
-
+<p>_____________________________________________________________________________________________</p><br>
 <%= link_to "Comment on this post", new_post_comment_url(@post), method: :get %><br>
-
+<h2>Comments</h2>
 <ul>
-<% @post.comments.each do |comment| %>
-      <li><%= link_to "#{comment.content.slice(0,40)}...", comment %></li>
+<% @post.parent_comments.each do |comment| %>
+      <li><%= link_to "#{comment.content.slice(0,60)}...", comment %><small> by <%= comment.author.username %></small></li>
+      <% if comment.has_children? %>
+          <%= render 'comments/comment', comment: comment %>
+      <% end %>
+      <br>
 <% end %>
 </ul>
 

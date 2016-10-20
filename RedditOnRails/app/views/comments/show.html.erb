@@ -7,14 +7,21 @@ Edit your PostsController#show view to provide a link to a comment form and to d
 
 
 
-<h3>Comment to <%= @comment.post.title %></h3>
+<h3>Comment to '<%= @comment.post.title %>'</h3>
 
 <p><%= @comment.content %></p>
-<p><small>-- Posted by: <%= @comment.author.username %></small></p>
+<p><small>Posted by: <%= @comment.author.username %> at <%= @comment.created_at %></small></p>
 
+<p><i>Reply to this comment</i></p>
 
+<%= render 'form', comment: @new_comment %>
 
-</div>
-
+<h3>Replies to Comment</h3>
+<ul>
+<% @comment.child_comments.each do |child| %>
+    <li><%= child.content %></li>
+    <small>posted by <%= child.author.username %> at <%= @comment.created_at %></small>
+    <% end %>
+  </ul>
 
 <%= link_to "<< Back to Main", subs_url %>

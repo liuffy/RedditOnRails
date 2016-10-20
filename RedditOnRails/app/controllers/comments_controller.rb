@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-    @new_comment = Comment.new(
+    @new_comment = Comment.new( # for replying to parent comments
       post_id: @comment.post_id,
       parent_comment_id: @comment.id
     )
