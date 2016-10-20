@@ -1,9 +1,8 @@
 <!-- I would build a _comment partial to display a comment and have the partial
 iterate through the #child_comments, recursively rendering the partial for each nested comment. -->
-
 <ul>
   <% comment.child_comments.each do |child| %>
-        <small> <li><%= link_to "#{child.content.slice(0,60)}...", child %>by <%= child.author.username %></small></li>
+        <li><%= link_to "#{child.content.slice(0,80)}...", child %><small>by <%= child.author.username %></small></li>
         <% if child.has_children? %>
         <%= render 'comments/comment', comment: child %>
         <% end %>

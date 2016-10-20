@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class User < ActiveRecord::Base
   validates :username, :session_token, :password_digest, presence: true
   validates :username, :session_token, uniqueness: true
@@ -14,6 +26,7 @@ class User < ActiveRecord::Base
 
   has_many :posts, inverse_of: :author
   has_many :comments, inverse_of: :author
+  has_many :votes, inverse_of: :voter
 
 
 

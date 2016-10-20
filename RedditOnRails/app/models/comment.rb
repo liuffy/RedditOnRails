@@ -1,9 +1,18 @@
-class Comment < ActiveRecord::Base
-
-
-# Write a CommentsController and add a route to create Comment. The new route could have a url like /posts/123/comments/new. I recommend that your form post to a top-level /comments URL, though. These are the only two comments routes you need so far.
+# == Schema Information
 #
-# Edit your PostsController#show view to provide a link to a comment form and to display top-level comments.
+# Table name: comments
+#
+#  id                :integer          not null, primary key
+#  post_id           :integer          not null
+#  user_id           :integer          not null
+#  content           :text             not null
+#  parent_comment_id :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
+class Comment < ActiveRecord::Base
+  include Votable # takes care of has_many association
 
   validates :content, :post, :author, presence: true
 

@@ -1,4 +1,18 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  url        :string
+#  content    :string
+#  created_at :datetime
+#  updated_at :datetime
+#  user_id    :integer          not null
+#
+
 class Post < ActiveRecord::Base
+  include Votable # takes care of has_many association
 
   validates :title, :author, presence: true #content not required (title alone is enough)
 

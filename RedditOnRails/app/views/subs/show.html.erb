@@ -8,7 +8,7 @@
 <h2 style="color:crimson">Newest Posts</h2>
 <ul>
 <% @sub.posts.each do |post| %>
-  <li><%= link_to "#{post.title.slice(0,50)}...", post %></li><small>submitted by <%= post.author.username %></small>
+  <li><%= link_to "#{post.title}", post %></li><small>submitted by <%= post.author.username %></small>
   <% end %>
 </ul>
 

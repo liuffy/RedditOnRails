@@ -9,6 +9,32 @@ class CommentsController < ApplicationController
     render :new
   end
 
+  def upvote
+    @comment = Comment.find(params[:id])
+    @user_vote = Vote.create(
+      votable_id: @comment.id,
+      votable_type: "Comment",
+      voter_id: current_user.id,
+      value: 1)
+
+    if @user_vote.nil?
+      flash.now[:errors] = @user_vote.errors.full_messages
+    end
+  end
+
+  def downvote
+    @comment = Comment.find(params[:id])
+    @user_vote = Vote.create(
+      votable_id: @comment.id,
+      votable_type: "Comment",
+      voter_id: current_user.id,
+      value: -1)
+
+    if @user_vote.nil?
+      flash.now[:errors] = @user_vote.errors.full_messages
+    end
+  end
+
   def create
     @comment = current_user.comments.new(comment_params)
 
