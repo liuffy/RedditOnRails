@@ -1,7 +1,7 @@
 class SubsController < ApplicationController
 
   before_action :user_is_mod!, only: [:edit, :update] # Use a before_action to prohibit non-moderators from editing or updating the Sub.
-  before_action :require_logged_in!
+  before_action :require_logged_in!, only: [:create, :new]
 # Write all the standard seven routes for SubsController. You can leave out destroy if you like.
 
 
