@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
     inverse_of: :moderator
   )
 
-  has_many :posts, inverse_of: :author
-  has_many :comments, inverse_of: :author
+  has_many :posts, class_name: 'Post', inverse_of: :author
+  has_many :comments, class_name: 'Comment', foreign_key: :user_id, inverse_of: :author
   has_many :votes, class_name: 'Vote', inverse_of: :voter
 
 
